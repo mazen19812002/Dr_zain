@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Zain Al-Abdeen Fathi Abu Shaeer - Curriculum Vitae</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        /* Custom styles and Theme Engine */
+        :root {
+            --bg-gradient-start: #e3f2fd;
+            --bg-gradient-mid: #bbdefb;
+            --bg-gradient-end: #90caf9;
+            --sidebar-bg: #2962ff;
+            --sidebar-text: #ffffff;
+            --sidebar-text-muted: #bbdefb;
+            --sidebar-hover-bg: #448aff;
+            --sidebar-active-bg: rgba(255, 255, 255, 0.4);
+            --sidebar-active-text: #1565c0;
+            --header-bg: #1976d2;
+            --header-text: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --text-heading: #1e88e5;
+            --text-subheading: #42a5f5;
+            --text-body: #374151;
+            --icon-color: #64b5f6;
+            --border-color: #90caf9;
+            --tag-bg: #e3f2fd;
+            --tag-text: #1e88e5;
+        }
+
+        [data-theme="green"] {
+            --bg-gradient-start: #f1f8e9; --bg-gradient-mid: #dcedc8; --bg-gradient-end: #c5e1a5;
+            --sidebar-bg: #388e3c; --sidebar-text-muted: #c5e1a5; --sidebar-hover-bg: #43a047; --sidebar-active-text: #388e3c;
+            --header-bg: #388e3c; --text-heading: #43a047; --text-subheading: #4caf50;
+            --icon-color: #66bb6a; --border-color: #81c784; --tag-bg: #f1f8e9; --tag-text: #388e3c;
+        }
+
+        [data-theme="purple"] {
+            --bg-gradient-start: #fce4ec; --bg-gradient-mid: #f8bbd0; --bg-gradient-end: #f48fb1;
+            --sidebar-bg: #8e24aa; --sidebar-text-muted: #f48fb1; --sidebar-hover-bg: #9c27b0; --sidebar-active-text: #8e24aa;
+            --header-bg: #8e24aa; --text-heading: #9c27b0; --text-subheading: #ab47bc;
+            --icon-color: #ba68c8; --border-color: #ce93d8; --tag-bg: #fce4ec; --tag-text: #8e24aa;
+        }
+
+        [data-theme="gray"] {
+            --bg-gradient-start: #fafafa; --bg-gradient-mid: #f5f5f5; --bg-gradient-end: #eeeeee;
+            --sidebar-bg: #616161; --sidebar-text-muted: #e0e0e0; --sidebar-hover-bg: #757575; --sidebar-active-text: #424242;
+            --header-bg: #616161; --text-heading: #424242; --text-subheading: #757575;
+            --icon-color: #9e9e9e; --border-color: #bdbdbd; --tag-bg: #f5f5f5; --tag-text: #424242;
+        }
+        
+        [data-theme="orange"] {
+            --bg-gradient-start: #fff8e1; --bg-gradient-mid: #ffecb3; --bg-gradient-end: #ffe082;
+            --sidebar-bg: #f57c00; --sidebar-text-muted: #ffe082; --sidebar-hover-bg: #fb8c00; --sidebar-active-text: #f57c00;
+            --header-bg: #f57c00; --text-heading: #fb8c00; --text-subheading: #ff9800;
+            --icon-color: #ffa726; --border-color: #ffb74d; --tag-bg: #fff8e1; --tag-text: #f57c00;
+        }
+        
+        [data-theme="teal"] {
+            --bg-gradient-start: #e0f7fa; --bg-gradient-mid: #b2ebf2; --bg-gradient-end: #80deea;
+            --sidebar-bg: #00796b; --sidebar-text-muted: #80deea; --sidebar-hover-bg: #00897b; --sidebar-active-text: #00796b;
+            --header-bg: #00796b; --text-heading: #00897b; --text-subheading: #009688;
+            --icon-color: #26a69a; --border-color: #4db6ac; --tag-bg: #e0f7fa; --tag-text: #00796b;
+        }
+
+        [data-theme="red"] {
+            --bg-gradient-start: #ffebf0; --bg-gradient-mid: #ffcdd8; --bg-gradient-end: #ef9aa4;
+            --sidebar-bg: #d32f2f; --sidebar-text-muted: #ef9aa4; --sidebar-hover-bg: #e53935; --sidebar-active-text: #d32f2f;
+            --header-bg: #d32f2f; --text-heading: #e53935; --text-subheading: #f44336;
+            --icon-color: #ef5350; --border-color: #e57373; --tag-bg: #ffebf0; --tag-text: #d32f2f;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+            transition: background 0.5s ease;
+        }
+        .ar-lang { font-family: 'Cairo', sans-serif; }
+        .sidebar {
+            transition: transform 0.3s ease-in-out, background-color 0.5s ease;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+        }
+        .sidebar-title-custom { color: var(--sidebar-text-muted); }
+        .sidebar-avatar-border { border-color: var(--border-color); }
+        .main-content { transition: margin-left 0.3s ease-in-out; }
+        .sidebar-link:hover { background-color: var(--sidebar-hover-bg); }
+        .sidebar-link.active { background-color: var(--sidebar-active-bg); color: var(--sidebar-active-text); transform: scale(1.05); }
+        .section-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .lang-btn.active { background-color: #1976d2; color: white; }
+        .header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.5rem; text-align: center; font-size: 0.875rem; font-weight: bold;
+            transition: background-color 0.5s ease;
+        }
+        #business-card-container { position: fixed; left: -9999px; top: 0; }
+        .heading-style { color: var(--text-heading); }
+        .subheading-style { color: var(--text-subheading); }
+        .text-body-style { color: var(--text-body); }
+        .icon-style { color: var(--icon-color); }
+        .border-style { border-color: var(--border-color); }
+        .tag-bg-style { background-color: var(--tag-bg); }
+        .tag-text-style { color: var(--tag-text); }
+    </style>
+</head>
+<body data-theme="default">
+
+    <div class="fixed top-4 left-4 z-50 flex space-x-2">
+        <button id="generate-pdf-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg transition-all duration-300 flex items-center justify-center shadow-md text-sm">
+            <i class="fas fa-id-card mr-2"></i> <span id="pdf-btn-text">Card</span>
+        </button>
+        <button id="show-qr-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded-lg transition-all duration-300 flex items-center justify-center shadow-md text-sm">
+            <i class="fas fa-qrcode mr-2"></i> <span>QR</span>
+        </button>
+        <button id="generate-cv-pdf-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-3 rounded-lg transition-all duration-300 flex items-center justify-center shadow-md text-sm">
+            <i class="fas fa-file-pdf mr-2"></i> <span id="cv-pdf-btn-text">Export CV</span>
+        </button>
+    </div>
+
+    <div class="fixed top-4 right-4 z-50">
+        <div class="flex justify-center space-x-2">
+            <button id="lang-en" class="lang-btn py-1 px-3 rounded-lg bg-white/30 backdrop-blur-sm text-sm font-semibold text-blue-900 border border-white/40 hover:bg-white/50 transition-all shadow-md">English</button>
+            <button id="lang-ar" class="lang-btn py-1 px-3 rounded-lg bg-white/30 backdrop-blur-sm text-sm font-semibold text-blue-900 border border-white/40 hover:bg-white/50 transition-all shadow-md">العربية</button>
+        </div>
+    </div>
+    
+    <div id="theme-selector" class="fixed bottom-4 right-4 z-50">
+        <button id="theme-toggle-btn" class="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-700 transition-all focus:outline-none">
+            <i class="fas fa-palette text-xl"></i>
+        </button>
+        <div id="theme-options" class="hidden absolute bottom-16 right-0 bg-white rounded-lg shadow-xl p-2 space-y-1 w-48 border border-gray-200">
+            </div>
+    </div>
+
+    <header class="header">
+        Dr. Zain Al-Abdeen Fathi Abu Shaeer - Mathematics Curriculum Vitae
+    </header>
+
+    <div class="flex flex-col md:flex-row">
+        <aside id="sidebar" class="sidebar w-full md:w-64 min-h-screen p-4 shadow-lg fixed md:sticky top-0 flex flex-col">
+            <div class="text-center mb-8">
+                <img src="https://placehold.co/150x150/FFFFFF/0D47A1?text=ZA" alt="Dr. Zain Abu Shaeer" class="sidebar-avatar-border w-24 h-24 object-cover rounded-full mx-auto mb-2 border-4">
+                <h1 id="sidebar-name" class="text-xl font-bold">Dr. Zain Abu Shaeer</h1>
+                <p id="sidebar-title" class="text-sm sidebar-title-custom">Mathematics Lecturer</p>
+            </div>
+            <nav id="nav-menu" class="space-y-2">
+                </nav>
+        </aside>
+
+        <main id="main-content" class="main-content w-full p-4 md:p-8">
+            
+            <section id="personal-info" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                <div class="en-text">
+                    <div class="text-center mb-6">
+                        <h1 class="text-4xl font-bold heading-style">Dr. Zain Al-Abdeen Fathi Abu Shaeer</h1>
+                        <p class="text-xl subheading-style">Lecturer in the Basic Sciences Department</p>
+                    </div>
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-user-circle mr-3"></i>Personal Information</h2>
+                    <ul class="space-y-2 text-body-style">
+                        <li><i class="fas fa-map-marker-alt w-5 mr-2 icon-style"></i><strong>Address:</strong> Kafr Elsheikh - Sheno</li>
+                        <li><i class="fas fa-flag w-5 mr-2 icon-style"></i><strong>Nationality:</strong> Egyptian</li>
+                        <li><i class="fas fa-calendar-alt w-5 mr-2 icon-style"></i><strong>Birth Date:</strong> 5-6-1972</li>
+                        <li><i class="fas fa-venus-mars w-5 mr-2 icon-style"></i><strong>Gender:</strong> Male</li>
+                        <li><i class="fas fa-heart w-5 mr-2 icon-style"></i><strong>Marital Status:</strong> Married</li>
+                        <li><i class="fas fa-phone w-5 mr-2 icon-style"></i><strong>Mobile:</strong> 01094815220</li>
+                        <li><i class="fas fa-envelope w-5 mr-2 icon-style"></i><strong>Email:</strong> Zainfathi43@kfs-hiet.edu.eg | zainfathi@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="ar-text ar-lang">
+                    <div class="text-center mb-6">
+                        <h1 class="text-4xl font-bold heading-style">دكتور/ زين العابدين فتحي ابراهيم ابو شعير</h1>
+                        <p class="text-xl subheading-style">مدرس بقسم العلوم الأساسية المعهد العالي للهندسة والكنولوجيا بكفر الشيخ</p>
+                    </div>
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-user-circle ml-3"></i>المعلومات الشخصية</h2>
+                    <ul class="space-y-2 text-body-style text-right">
+                        <li><i class="fas fa-map-marker-alt w-5 ml-2 icon-style"></i><strong>العنوان:</strong> كفر الشيخ – رزقة الشناوي شنو</li>
+                        <li><i class="fas fa-flag w-5 ml-2 icon-style"></i><strong>الجنسية:</strong> مصري</li>
+                        <li><i class="fas fa-calendar-alt w-5 ml-2 icon-style"></i><strong>تاريخ الميلاد:</strong> 5-6-1972</li>
+                        <li><i class="fas fa-venus-mars w-5 ml-2 icon-style"></i><strong>الجنس:</strong> ذكر</li>
+                        <li><i class="fas fa-heart w-5 ml-2 icon-style"></i><strong>الحالة الاجتماعية:</strong> متزوج ويعول</li>
+                        <li><i class="fas fa-phone w-5 ml-2 icon-style"></i><strong>رقم الجوال:</strong> 01094815220</li>
+                        <li><i class="fas fa-envelope w-5 ml-2 icon-style"></i><strong>البريد الالكتروني:</strong> Zainfathi43@kfs-hiet.edu.eg | zainfathi@hotmail.com</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="qualifications" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                 <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-graduation-cap mr-3"></i>Qualifications</h2>
+                    <div class="space-y-4 text-body-style">
+                        <p><strong>Ph.D. in Pure Mathematics (Numerical Analysis), 2017</strong> - Science, Al-Azhar Alsharif</p>
+                        <p><strong>Master's in Applied Mathematics (Fluid Mechanic), 2000</strong> - Faculty of Science, Tanta University</p>
+                        <p><strong>B.Sc. in Science Mathematics (Pure and Applied), 1995</strong> - Faculty of Science, South Valley University</p>
+                    </div>
+                </div>
+                <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-graduation-cap ml-3"></i>المؤهلات</h2>
+                    <div class="space-y-4 text-body-style">
+                        <p><strong>الدكتوراه في الرياضيات البحته (التحليل العددي), 2017</strong> - كلية العلوم، جامعة الأزهر</p>
+                        <p><strong>ماجستير في الرياضيات التطبيقية (ميكانيكا الموائع), 2000</strong> - كلية العلوم، جامعة طنطا</p>
+                        <p><strong>بكالوريوس علوم رياضيات (الرياضيات البحته والتطبيقيه), 1995</strong> - كلية العلوم، جامعة جنوب الوادي</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                 <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-briefcase mr-3"></i>Experience</h2>
+                    <div class="space-y-4 text-body-style">
+                        <p><strong>Lecturer</strong>: Department of Basic Sciences, Higher Institute of Engineering and Technology, Kafr El-Sheikh (2019 - Now)</p>
+                        <p><strong>Lecturer</strong>: Deanship of the Preparatory Year, King Saud University and Prince Sattam University (2014 - 2017)</p>
+                        <p><strong>Research Assistant</strong>: Department of Mathematics, Faculty of Education, Kafr El-Sheikh (1996 - 2000)</p>
+                    </div>
+                </div>
+                <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-briefcase ml-3"></i>الخبرات المهنية</h2>
+                    <div class="space-y-4 text-body-style">
+                        <p><strong>مدرس</strong>: قسم العلوم الأساسية المعهد العالي للهندسة والتكنولوجيا بكفر الشيخ (2019 - الان)</p>
+                        <p><strong>مدرس</strong>: عمادة السنة التحضيرية جامعة الملك سعود - جامعة الأمير سطام (2014 - 2017)</p>
+                        <p><strong>مساعد باحث</strong>: قسم الرياضيات كلية التربية كفر الشيخ (1996 - 2000)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-book-open mr-3"></i>Publications</h2>
+                    <ul class="list-disc list-inside space-y-2 text-body-style">
+                        <li>Zain F. AbuShaeer, et al. Electrohydrodynamic Behaviour of Charged Cavitation Bubbles in Hybrid Nanofluids: A Mooney–Rivlin Model Approach. <i>Journal of Computational Design and Engineering</i>, 13(1), 158-173, (2026).</li>
+                        <li>Ahmed K. Abu-Nab, Zain AbuShaeer, Ali F. Abu-Bakr. Nonlinear dynamics of lipid-encapsulated acoustic microbubbles under ultrasound effect: Modeling and numerical investigations. <i>ZAMM</i>, 105(9), (2025).</li>
+                        <li>Zain AbuShaeer, et al. Nonlinear Acoustic Multicavitation with External Ultrasound Field in Complex Fluids: Numerical Investigation. <i>Journal of Computational Design and Engineering</i>, 12(7), 16–34 (2025).</li>
+                        <li>Ahmed M. Awad. Enhancing productivity and reducing cost of a solar desalination system... <i>Applied Thermal Engineering</i>, 278, 127379 (2025).</li>
+                        <li>Zain F. AbuShaeer, Mofreh Hmed, Ahmad Awad. Comparative Analysis of Nanofluid Boundary Layer Flow over a Moving Plate Using HAM, DTM–Padé, and Shooting Method. <i>J. of Engineering Research (JER)</i>, 9(4), (2025).</li>
+                        <li>Ali F. Abu-Bakr, Ahmed K. Abu-Nab, Zain F. AbuShaeer. Analysis of multi-frequency ultrasound effect on acoustic microcavitations in N-dimensional fluid. <i>Results in Engineering</i>, 24, 103154 (2024).</li>
+                    </ul>
+                </div>
+                 <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-book-open ml-3"></i>الأبحاث المنشورة</h2>
+                    <ul class="list-disc list-inside space-y-2 text-body-style text-left" dir="ltr">
+                        <li>Zain F. AbuShaeer, et al. Electrohydrodynamic Behaviour of Charged Cavitation Bubbles in Hybrid Nanofluids: A Mooney–Rivlin Model Approach. <i>Journal of Computational Design and Engineering</i>, 13(1), 158-173, (2026).</li>
+                        <li>Ahmed K. Abu-Nab, Zain AbuShaeer, Ali F. Abu-Bakr. Nonlinear dynamics of lipid-encapsulated acoustic microbubbles under ultrasound effect: Modeling and numerical investigations. <i>ZAMM</i>, 105(9), (2025).</li>
+                        <li>Zain AbuShaeer, et al. Nonlinear Acoustic Multicavitation with External Ultrasound Field in Complex Fluids: Numerical Investigation. <i>Journal of Computational Design and Engineering</i>, 12(7), 16–34 (2025).</li>
+                        <li>Ahmed M. Awad. Enhancing productivity and reducing cost of a solar desalination system... <i>Applied Thermal Engineering</i>, 278, 127379 (2025).</li>
+                        <li>Zain F. AbuShaeer, Mofreh Hmed, Ahmad Awad. Comparative Analysis of Nanofluid Boundary Layer Flow over a Moving Plate Using HAM, DTM–Padé, and Shooting Method. <i>J. of Engineering Research (JER)</i>, 9(4), (2025).</li>
+                        <li>Ali F. Abu-Bakr, Ahmed K. Abu-Nab, Zain F. AbuShaeer. Analysis of multi-frequency ultrasound effect on acoustic microcavitations in N-dimensional fluid. <i>Results in Engineering</i>, 24, 103154 (2024).</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="interests" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-microscope mr-3"></i>Scientific Interests</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">Nano biological Mathematics</span>
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">Nanotechnology</span>
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">Mathematical Modeling</span>
+                    </div>
+                </div>
+                <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-microscope ml-3"></i>الاهتمامات العلمية</h2>
+                    <div class="flex flex-wrap gap-4 justify-end">
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">الرياضيات النانو- حيوية</span>
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">النانو التكنولوجي</span>
+                        <span class="tag-bg-style tag-text-style px-3 py-1 rounded-full font-semibold">النمذجة الرياضية</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="teaching" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-chalkboard mr-3"></i>Teaching Experience</h2>
+                    <ul class="list-disc list-inside space-y-2 text-body-style">
+                        <li>Engineering Mathematics (2, 3, 4)</li>
+                        <li>Numerical Analysis</li>
+                        <li>Differential Equations (1 & 2)</li>
+                        <li>Statistics and Probability</li>
+                        <li>Applied Statistics</li>
+                        <li>Advanced Mathematics</li>
+                    </ul>
+                </div>
+                <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-chalkboard ml-3"></i>الخبرات التدريسية</h2>
+                    <ul class="list-disc list-inside space-y-2 text-body-style">
+                        <li>الرياضيات الهندسية (2، 3، 4)</li>
+                        <li>التحليل العددي</li>
+                        <li>معادلات تفاضلية (1، 2)</li>
+                        <li>الاحصاء والاحتمالات</li>
+                        <li>الاحصاء التطبيقى</li>
+                        <li>رياضيات متفرعة</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="training-courses" class="mb-8 section-card p-6 rounded-2xl shadow-md">
+                <div class="en-text">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center"><i class="fas fa-certificate mr-3"></i>Training & Workshops</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <ul class="list-disc list-inside space-y-1 text-body-style">
+                                <li>Creativity, Innovation, and Entrepreneurship Skills</li>
+                                <li>Digital Transformation</li>
+                                <li>Professional Ethics and Conduct</li>
+                                <li>Ethics in Scientific Research</li>
+                                <li>Time Management</li>
+                                <li>Exam Preparation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ar-text ar-lang text-right">
+                    <h2 class="text-3xl font-bold heading-style border-style border-b-4 pb-2 mb-4 flex items-center justify-start"><i class="fas fa-certificate ml-3"></i>الدورات التدريبية وورش العمل</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <ul class="list-disc list-inside space-y-1 text-body-style">
+                                <li>مهارات الإبداع والابتكار وريادة الأعمال</li>
+                                <li>التحول الرقمي</li>
+                                <li>أداب وسلوكيات المهنة</li>
+                                <li>الاخلاقيات في البحث العلمي</li>
+                                <li>إدارة الوقت</li>
+                                <li>اعداد الامتحانات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="business-card-container">
+        <div id="business-card-en" class="w-[525px] h-[300px] bg-white shadow-lg flex font-sans">
+            <div class="w-2/5 bg-blue-800 text-white p-6 flex flex-col justify-center items-center text-center">
+                <img src="https://placehold.co/80x80/FFFFFF/0D47A1?text=ZA" alt="Dr. Zain Abu Shaeer" class="w-20 h-20 rounded-full mb-3 border-2 border-blue-400">
+                <h2 class="text-2xl font-bold">Dr. Zain Abu Shaeer</h2>
+                <p class="text-blue-200">Mathematics Lecturer</p>
+            </div>
+            <div class="w-3/5 p-4 flex flex-col"> 
+                <div>
+                    <div class="mb-4">
+                        <h3 class="font-bold text-blue-900 border-b-2 border-blue-200 pb-1 mb-2">Affiliation</h3>
+                        <p class="text-sm text-gray-700">Higher Institute of Engineering & Technology, Kafr El-Sheikh</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-900 border-b-2 border-blue-200 pb-1 mb-2">Contact Details</h3>
+                        <p class="text-sm text-gray-700 flex items-center"><i class="fas fa-phone w-4 mr-2 text-blue-600"></i>01094815220</p>
+                        <p class="text-sm text-gray-700 flex items-center mt-1"><i class="fas fa-envelope w-4 mr-2 text-blue-600"></i>Zainfathi43@kfs-hiet.edu.eg</p>
+                    </div>
+                </div>
+                <div class="flex-grow"></div>
+                <div class="flex justify-start">
+                    <img src="qrcode_placeholder.png" alt="QR Code" class="w-16 h-16" onerror="this.src='https://placehold.co/64x64/1E293B/FFFFFF?text=QR'">
+                </div>
+            </div>
+        </div>
+        <div id="business-card-ar" class="w-[525px] h-[300px] bg-white shadow-lg flex font-sans ar-lang" dir="rtl">
+            <div class="w-3/5 p-4 flex flex-col text-right">
+                 <div>
+                    <div class="mb-4">
+                        <h3 class="font-bold text-blue-900 border-b-2 border-blue-200 pb-1 mb-2">جهات العمل</h3>
+                        <p class="text-sm text-gray-700">المعهد العالي للهندسة والتكنولوجيا، بكفر الشيخ</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-900 border-b-2 border-blue-200 pb-1 mb-2">معلومات الاتصال</h3>
+                        <p class="text-sm text-gray-700 flex items-center justify-start mt-1"><i class="fas fa-phone w-4 ml-2 text-blue-600"></i>٠١٠٩٤٨١٥٢٢٠</p>
+                        <p class="text-sm text-gray-700 flex items-center justify-start"><i class="fas fa-envelope w-4 ml-2 text-blue-600"></i>Zainfathi43@kfs-hiet.edu.eg</p>
+                    </div>
+                </div>
+                <div class="flex-grow"></div>
+                <div class="flex justify-end">
+                     <img src="qrcode_placeholder.png" alt="QR Code" class="w-16 h-16" onerror="this.src='https://placehold.co/64x64/1E293B/FFFFFF?text=QR'">
+                </div>
+            </div>
+            <div class="w-2/5 bg-blue-800 text-white p-6 flex flex-col justify-center items-center text-center">
+                <img src="https://placehold.co/80x80/FFFFFF/0D47A1?text=ZA" alt="د. زين أبو شعير" class="w-20 h-20 rounded-full mb-3 border-2 border-blue-400">
+                <h2 class="text-2xl font-bold">د. زين أبو شعير</h2>
+                <p class="text-blue-200">مدرس رياضيات</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="qr-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] hidden transition-opacity duration-300">
+        <div class="relative bg-white p-4 rounded-lg shadow-xl max-w-sm w-full mx-4">
+            <button id="close-modal-btn" class="absolute -top-3 -right-3 text-white bg-red-500 rounded-full h-8 w-8 flex items-center justify-center text-xl font-bold hover:bg-red-600 transition-colors">&times;</button>
+            <img src="qrcode_placeholder.png" alt="QR Code" class="w-full h-auto" onerror="this.src='https://placehold.co/300x300/CCCCCC/FFFFFF?text=QR+Code+Not+Found'">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Get DOM elements ---
+            const sections = document.querySelectorAll('main section');
+            const navMenu = document.getElementById('nav-menu');
+            const langEnBtn = document.getElementById('lang-en');
+            const langArBtn = document.getElementById('lang-ar');
+            const sidebarName = document.getElementById('sidebar-name');
+            const sidebarTitle = document.getElementById('sidebar-title');
+            const pdfBtnText = document.getElementById('pdf-btn-text');
+            const generatePdfBtn = document.getElementById('generate-pdf-btn');
+            const cvPdfBtnText = document.getElementById('cv-pdf-btn-text');
+            const generateCvPdfBtn = document.getElementById('generate-cv-pdf-btn');
+            const { jsPDF } = window.jspdf;
+            const showQrBtn = document.getElementById('show-qr-btn');
+            const qrModal = document.getElementById('qr-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const themeToggleButton = document.getElementById('theme-toggle-btn');
+            const themeOptions = document.getElementById('theme-options');
+            const body = document.body;
+            
+            // --- Translations for dynamic content ---
+            const translations = {
+                en: {
+                    name: "Dr. Zain Abu Shaeer", title: "Mathematics Lecturer", cardBtn: "Card", cvPdfBtn: "Export CV",
+                    sections: {
+                        'personal-info': { text: "Personal Info", icon: "fas fa-user-circle" },
+                        'qualifications': { text: "Qualifications", icon: "fas fa-graduation-cap" },
+                        'experience': { text: "Experience", icon: "fas fa-briefcase" },
+                        'publications': { text: "Publications", icon: "fas fa-book-open" },
+                        'interests': { text: "Scientific Interests", icon: "fas fa-microscope" },
+                        'teaching': { text: "Teaching Experience", icon: "fas fa-chalkboard" },
+                        'training-courses': { text: "Training Courses", icon: "fas fa-certificate" }
+                    }
+                },
+                ar: {
+                    name: "د/ زين أبو شعير", title: "مدرس رياضيات", cardBtn: "بطاقة", cvPdfBtn: "تصدير السيرة الذاتية",
+                    sections: {
+                        'personal-info': { text: "المعلومات الشخصية", icon: "fas fa-user-circle" },
+                        'qualifications': { text: "المؤهلات", icon: "fas fa-graduation-cap" },
+                        'experience': { text: "الخبرات", icon: "fas fa-briefcase" },
+                        'publications': { text: "الأبحاث", icon: "fas fa-book-open" },
+                        'interests': { text: "الاهتمامات العلمية", icon: "fas fa-microscope" },
+                        'teaching': { text: "التدريس", icon: "fas fa-chalkboard" },
+                        'training-courses': { text: "الدورات التدريبية", icon: "fas fa-certificate" }
+                    }
+                }
+            };
+
+            // --- Theme Selector Logic ---
+            const themes = {
+                'default': 'Default Blue', 'green': 'Forest Green', 'purple': 'Royal Purple',
+                'gray': 'Modern Gray', 'orange': 'Sunset Orange', 'teal': 'Deep Teal', 'red': 'Crimson Red'
+            };
+            
+            const swatchStyle = document.createElement('style');
+            swatchStyle.innerHTML = `
+                .theme-swatch-default { background: linear-gradient(45deg, #90caf9, #2962ff); }
+                .theme-swatch-green { background: linear-gradient(45deg, #c5e1a5, #388e3c); }
+                .theme-swatch-purple { background: linear-gradient(45deg, #f48fb1, #8e24aa); }
+                .theme-swatch-gray { background: linear-gradient(45deg, #eeeeee, #616161); }
+                .theme-swatch-orange { background: linear-gradient(45deg, #ffe082, #f57c00); }
+                .theme-swatch-teal { background: linear-gradient(45deg, #80deea, #00796b); }
+                .theme-swatch-red { background: linear-gradient(45deg, #ef9aa4, #d32f2f); }
+            `;
+            document.head.appendChild(swatchStyle);
+
+            Object.keys(themes).forEach(key => {
+                const button = document.createElement('button');
+                button.innerHTML = `<span class="inline-block w-4 h-4 rounded-full mr-3 theme-swatch-${key}"></span> ${themes[key]}`;
+                button.classList.add('w-full', 'text-left', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100', 'flex', 'items-center', 'text-sm', 'text-gray-700');
+                button.onclick = () => { setTheme(key); themeOptions.classList.add('hidden'); };
+                themeOptions.appendChild(button);
+            });
+
+            function setTheme(themeName) {
+                body.dataset.theme = themeName;
+                localStorage.setItem('cv-theme', themeName);
+            }
+
+            themeToggleButton.addEventListener('click', () => themeOptions.classList.toggle('hidden'));
+            document.addEventListener('click', (e) => {
+                if (!themeToggleButton.contains(e.target) && !themeOptions.contains(e.target)) {
+                    themeOptions.classList.add('hidden');
+                }
+            });
+            setTheme(localStorage.getItem('cv-theme') || 'default');
+
+            // --- Navigation and Language Logic ---
+            function updateNav(lang) {
+                const sectionData = translations[lang].sections;
+                navMenu.innerHTML = '';
+                Object.keys(sectionData).forEach(id => {
+                    const link = document.createElement('a');
+                    link.href = `#${id}`;
+                    link.classList.add('sidebar-link', 'block', 'py-2', 'px-4', 'rounded-lg', 'hover:bg-blue-600', 'transition-all', 'duration-200', 'flex', 'items-center');
+                    link.dataset.sectionId = id;
+                    
+                    if (lang === 'ar') {
+                        link.innerHTML = `${sectionData[id].text} <i class="${sectionData[id].icon} mr-3"></i>`;
+                        link.classList.add('text-right', 'justify-start');
+                    } else {
+                        link.innerHTML = `<i class="${sectionData[id].icon} mr-3"></i> ${sectionData[id].text}`;
+                    }
+                    navMenu.appendChild(link);
+                });
+            }
+
+            function switchLanguage(lang) {
+                document.documentElement.lang = lang;
+                const isAr = lang === 'ar';
+                document.querySelectorAll('.en-text').forEach(el => el.style.display = isAr ? 'none' : 'block');
+                document.querySelectorAll('.ar-text').forEach(el => el.style.display = isAr ? 'block' : 'none');
+                document.body.dir = isAr ? 'rtl' : 'ltr';
+                document.getElementById('sidebar').style.textAlign = isAr ? 'right' : 'left';
+                langEnBtn.classList.toggle('active', !isAr);
+                langArBtn.classList.toggle('active', isAr);
+                sidebarName.textContent = translations[lang].name;
+                sidebarTitle.textContent = translations[lang].title;
+                pdfBtnText.textContent = translations[lang].cardBtn;
+                cvPdfBtnText.textContent = translations[lang].cvPdfBtn;
+                updateNav(lang);
+                updateActiveLink();
+            }
+
+            function updateActiveLink() {
+               let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                document.querySelectorAll('.sidebar-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.sectionId === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // --- PDF Generation ---
+            function generateCardPDF() {
+                const currentLang = document.documentElement.lang;
+                const cardId = currentLang === 'ar' ? 'business-card-ar' : 'business-card-en';
+                const cardElement = document.getElementById(cardId);
+                const originalBtnText = pdfBtnText.textContent;
+                
+                pdfBtnText.textContent = currentLang === 'ar' ? 'جاري الإنشاء...' : 'Generating...';
+                generatePdfBtn.disabled = true;
+
+                html2canvas(cardElement, { scale: 3, useCORS: true }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [525, 300] });
+                    pdf.addImage(imgData, 'PNG', 0, 0, 525, 300);
+                    pdf.save('Dr-Zain-Abu-Shaeer-Business-Card.pdf');
+                    pdfBtnText.textContent = originalBtnText;
+                    generatePdfBtn.disabled = false;
+                }).catch(err => {
+                    console.error("Card PDF generation failed:", err);
+                    pdfBtnText.textContent = originalBtnText;
+                    generatePdfBtn.disabled = false;
+                });
+            }
+
+            async function generateCVPDF() {
+                const currentLang = document.documentElement.lang;
+                const cvContent = document.getElementById('main-content');
+                const originalButtonText = cvPdfBtnText.textContent;
+                const pdfFileName = 'Dr-Zain-Abu-Shaeer-CV.pdf';
+                
+                cvPdfBtnText.textContent = currentLang === 'ar' ? 'جاري التصدير...' : 'Exporting...';
+                generateCvPdfBtn.disabled = true;
+
+                const cardSections = cvContent.querySelectorAll('.section-card');
+                cardSections.forEach(s => s.style.boxShadow = 'none');
+
+                try {
+                    const pdf = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const margin = 15;
+                    const contentWidth = pageWidth - (margin * 2);
+                    let y = margin; 
+
+                    const sectionElements = Array.from(cvContent.querySelectorAll('section'));
+
+                    for (const section of sectionElements) {
+                        const canvas = await html2canvas(section, { scale: 2, useCORS: true });
+                        
+                        const imgData = canvas.toDataURL('image/png');
+                        const imgWidth = canvas.width;
+                        const imgHeight = canvas.height;
+                        
+                        const pdfImageHeight = (imgHeight * contentWidth) / imgWidth;
+
+                        if (y + pdfImageHeight > pageHeight - margin) {
+                            pdf.addPage();
+                            y = margin; 
+                        }
+
+                        pdf.addImage(imgData, 'PNG', margin, y, contentWidth, pdfImageHeight);
+                        y += pdfImageHeight + 10; 
+                    }
+                    
+                    pdf.save(pdfFileName);
+                } catch (err) {
+                    console.error("CV PDF generation failed:", err);
+                } finally {
+                    cardSections.forEach(s => s.style.boxShadow = '');
+                    cvPdfBtnText.textContent = originalButtonText;
+                    generateCvPdfBtn.disabled = false;
+                }
+            }
+            
+            // --- QR Code Modal Logic ---
+            function showQrModal() { qrModal.classList.remove('hidden'); }
+            function hideQrModal() { qrModal.classList.add('hidden'); }
+            
+            // --- Event Listeners ---
+            langEnBtn.addEventListener('click', () => switchLanguage('en'));
+            langArBtn.addEventListener('click', () => switchLanguage('ar'));
+            generatePdfBtn.addEventListener('click', generateCardPDF);
+            generateCvPdfBtn.addEventListener('click', generateCVPDF);
+            window.addEventListener('scroll', updateActiveLink);
+            showQrBtn.addEventListener('click', showQrModal);
+            closeModalBtn.addEventListener('click', hideQrModal);
+            qrModal.addEventListener('click', (e) => { if (e.target === qrModal) hideQrModal(); });
+            
+            // --- Initial setup ---
+            switchLanguage('en');
+            updateActiveLink();
+        });
+    </script>
+</body>
+</html>
